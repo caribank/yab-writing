@@ -8,16 +8,128 @@
     <link rel="stylesheet" href="alignment.css">
     <link rel="stylesheet" href="glossing.css">
     <title>A digital sketch grammar of Yawarana</title>
+    <style>
+
+/*adapted from https://code-boxx.com/collapsible-list-html-css-js/#sec-download*/
+        /* (A) CONTAINER */
+.collapse, .collapse ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+/* (C) TOGGLE */
+.toggle {
+/*  padding: 10px;*/
+  cursor: pointer;
+}
+.toggleWrap::before {
+  display: inline-block;
+  width: 15px;
+  content: "🞂";
+}
+.toggleWrap.show::before { content: "🞃"; }
+
+/* (D) SHOW/HIDE */
+.collapse ol { display: none; }
+.toggleWrap.show + ol { display: block; }
+
+
+/* 1. Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Make nav sticky */
+nav {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+}
+
+/* 3. ScrollSpy active styles (see JS tab for activation) */
+.toc *.active a {
+  color: #333;
+  font-weight: 500;
+}
+
+.toc div.active {
+  color: #333;
+  font-weight: 500;
+}
+
+.toc div {
+  text-decoration: none;
+  display: block;
+  padding: .125rem 0;
+  color: #ccc;
+  transition: all 50ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
+}
+
+/* Sidebar Navigation */
+.toc {
+  padding-left: 0;
+}
+
+.toc a {
+  text-decoration: none;
+  display: block;
+  padding: .125rem 0;
+  color: #ccc;
+  transition: all 50ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
+}
+
+.toc a:hover,
+.toc a:focus {
+  color: #666;
+}
+
+/** Poor man's reset **/
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #fff;
+}
+
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  margin-left: 1rem;
+}
+
+h1 {
+  font-weight: 300;
+}
+
+/** page layout **/
+main {
+  display: grid;
+  grid-template-columns: 15em 1fr;
+  max-width: 100em;
+  width: 90%;
+  margin: 0 auto;
+}
+
+    </style>
 </head>
 <body>
+    <main>
+        <div>
+         <nav class="toc">
+            <ol id="nav-items" class="collapse">
+            </ol>
+        </nav>
+    </div>
+    <div>
     <article>
         <h1>A digital sketch grammar of Yawarana</h1>
         <div class="author">Florian Matter and Natalia Cáceres Arandia and Spike Gildea</div>
         <div class="version"> version 0.0.3 </div>
-        <div id="toc-wrapper">
-            <button onclick="toggleTOC()">Toggle TOC</button>
-            <div id="toc"></div>
-        </div>
         
         <div class="abstract">
             <b>Abstract</b>
@@ -27,14 +139,28 @@
         </div>
         
 
-        <h2 id="intro">Introduction</h2>
-<h3 id="sec:people">The Yawarana people and their language</h3>
-<h3 id="sec:context">Location, historical records</h3>
-<h3 id="sec:currentlife">Current life</h3>
-<h3 id="sec:vitality">Sociolinguistic vitality</h3>
-<h3 id="sec:previous">Previous studies on the Yawarana language</h3>
-<h3 id="sec:thisproject">This project</h3>
-<h3 id="sec:variation">Variation</h3>
+        <section id="intro" class="level2">
+<h2>Introduction</h2>
+<section id="sec:people" class="level3">
+<h3>The Yawarana people and their language</h3>
+</section>
+<section id="sec:context" class="level3">
+<h3>Location, historical records</h3>
+</section>
+<section id="sec:currentlife" class="level3">
+<h3>Current life</h3>
+</section>
+<section id="sec:vitality" class="level3">
+<h3>Sociolinguistic vitality</h3>
+</section>
+<section id="sec:previous" class="level3">
+<h3>Previous studies on the Yawarana language</h3>
+</section>
+<section id="sec:thisproject" class="level3">
+<h3>This project</h3>
+</section>
+<section id="sec:variation" class="level3">
+<h3>Variation</h3>
 <p>Some corners of Yawarana grammar are subject to variation:</p>
 <ul>
 <li>vowel system
@@ -53,8 +179,12 @@
 class="gloss">erg<span class="tooltiptext gloss-erg"></span></span>’
 (<a href='#simpleverb' class='crossref' name='simpleverb' >ref</a>)</li>
 </ul>
-<h2 id="phono">Phonetics and phonology</h2>
-<h3 id="sec:segmental">Segmental phonetics and phonemes</h3>
+</section>
+</section>
+<section id="phono" class="level2">
+<h2>Phonetics and phonology</h2>
+<section id="sec:segmental" class="level3">
+<h3>Segmental phonetics and phonemes</h3>
 <p>The consonant phonemes of Yawarana are shown in
 <a href='#tab:consonants' class='crossref' name='tab:consonants' >ref</a>,
 vowel phonemes in
@@ -236,16 +366,21 @@ open
 </tr>
 </tbody>
 </table>
-<h4 id="sec:consonants">Consonants</h4>
+<section id="sec:consonants" class="level4">
+<h4>Consonants</h4>
 <ul>
 <li>add minimal pairs</li>
 </ul>
-<h5 id="h">/h/</h5>
+<section id="h" class="level5">
+<h5>/h/</h5>
 <ul>
 <li>glottal fricative insertion after diphthongs</li>
 <li>glottal fricative insertion before occlusives</li>
 </ul>
-<h4 id="sec:vowels">Vowels</h4>
+</section>
+</section>
+<section id="sec:vowels" class="level4">
+<h4>Vowels</h4>
 <ul>
 <li>add minimal pairs</li>
 <li>add vowel plots</li>
@@ -258,45 +393,72 @@ open
 title="spelling? au or aw? ai or ay?">❓</span></li>
 </ul></li>
 </ul>
-<h3 id="sec:morphophono">Morphophonological Processes</h3>
-<h4 id="sec:sylred">Syllable Reduction</h4>
-<h5 id="types">Types</h5>
+</section>
+</section>
+<section id="sec:morphophono" class="level3">
+<h3>Morphophonological Processes</h3>
+<section id="sec:sylred" class="level4">
+<h4>Syllable Reduction</h4>
+<section id="types" class="level5">
+<h5>Types</h5>
 <ul>
 <li>V<sub>1</sub>rV2 to V1:</li>
 <li>nasal assimilation</li>
 <li>what consonants reduce to /j/?</li>
 </ul>
-<h5 id="contexts">Contexts</h5>
+</section>
+<section id="contexts" class="level5">
+<h5>Contexts</h5>
 <ul>
 <li>postpositions</li>
 <li>verbal suffixes</li>
 <li>no final nominal reduction</li>
 <li>non-alternating reduced syllables, e.g. <i>wajto</i> ‘fire’</li>
 </ul>
-<h4 id="sec:vowelharm">Vowel harmony</h4>
+</section>
+</section>
+<section id="sec:vowelharm" class="level4">
+<h4>Vowel harmony</h4>
 <ul>
 <li>progressive <i>-ri</i> ‘<span class="gloss">pert<span
 class="tooltiptext gloss-pert"></span></span>’</li>
 <li>regressive /ë/ &gt; /o/</li>
 </ul>
-<h4 id="sec:palatalization">Palatalization</h4>
+</section>
+<section id="sec:palatalization" class="level4">
+<h4>Palatalization</h4>
 <ul>
 <li><i>-sapë</i> ‘<span class="gloss">pfv<span
 class="tooltiptext gloss-pfv"></span></span>’</li>
 <li><i>-se</i> ‘<span class="gloss">pst<span
 class="tooltiptext gloss-pst"></span></span>’</li>
 </ul>
-<h3 id="sec:prosody">Prosody</h3>
-<h4 id="sec:stress">Lexical stress</h4>
-<h4 id="sec:intphrases">Intonational Phrases</h4>
+</section>
+</section>
+<section id="sec:prosody" class="level3">
+<h3>Prosody</h3>
+<section id="sec:stress" class="level4">
+<h4>Lexical stress</h4>
+</section>
+<section id="sec:intphrases" class="level4">
+<h4>Intonational Phrases</h4>
 <p><span
 title="f0 increase associated w/ pitch reset, clause boundaries?">❓</span></p>
-<h4 id="sec:intmelodies">Intonational Melodies</h4>
-<h3 id="sec:histphono">Historical Considerations</h3>
-<h2 id="POS">Parts of speech in Yawarana</h2>
-<h3 id="distinguishing-parts-of-speech">Distinguishing parts of
-speech</h3>
-<h4 id="adverbs">Adverbs</h4>
+</section>
+<section id="sec:intmelodies" class="level4">
+<h4>Intonational Melodies</h4>
+</section>
+</section>
+<section id="sec:histphono" class="level3">
+<h3>Historical Considerations</h3>
+</section>
+</section>
+<section id="POS" class="level2">
+<h2>Parts of speech in Yawarana</h2>
+<section id="distinguishing-parts-of-speech" class="level3">
+<h3>Distinguishing parts of speech</h3>
+<section id="adverbs" class="level4">
+<h4>Adverbs</h4>
 <ul>
 <li>copredicative function</li>
 <li>no person inflection <span
@@ -305,13 +467,18 @@ title="except some deverbalized ones?">❓</span></li>
 class="tooltiptext gloss-prop"></span></span>’ <span
 title="-ke is negated with -jra only when on noun roots?">❓</span></li>
 </ul>
-<h4 id="postpositions">Postpositions</h4>
+</section>
+<section id="postpositions" class="level4">
+<h4>Postpositions</h4>
 <ul>
 <li><a href="#source-koehn1986apalai">Koehn and Koehn 1986</a>: 111 on
 Apalaí: “Particles follow words of any class other than the ideophone,
 and never occur as free forms or in isolation.”</li>
 </ul>
-<h3 id="shared-morphology">Shared morphology</h3>
+</section>
+</section>
+<section id="shared-morphology" class="level3">
+<h3>Shared morphology</h3>
 <ul>
 <li>shared prefixes between nouns and postpositions</li>
 <li>shared clitics (?) with verbs</li>
@@ -441,7 +608,9 @@ i3
 </tr>
 </tbody>
 </table>
-<h3 id="derivation-and-productivity">Derivation and productivity</h3>
+</section>
+<section id="derivation-and-productivity" class="level3">
+<h3>Derivation and productivity</h3>
 <ul>
 <li>changing word classes</li>
 <li>semantic variation &amp; non-compositional meanings</li>
@@ -450,8 +619,12 @@ suffixes</li>
 <li>some constructions need a different word class, no meaning change
 per se</li>
 </ul>
-<h2 id="nouns">Nouns</h2>
-<h3 id="sec:pronouns">Pronouns</h3>
+</section>
+</section>
+<section id="nouns" class="level2">
+<h2>Nouns</h2>
+<section id="sec:pronouns" class="level3">
+<h3>Pronouns</h3>
 <p>The personal pronouns of Yawarana are shown in
 <a href='#tab:pronouns' class='crossref' name='tab:pronouns' >ref</a>.
 The system shows the usual Cariban inclusive/exclusive (<span
@@ -787,7 +960,9 @@ title=‘no examples of <em>ëjkë</em> ’which?’’&gt;❓</span>
 <li><i>ati</i> ‘what’ (no plural)</li>
 </ul></li>
 </ul>
-<h3 id="sec:nouninfl">Nominal inflection</h3>
+</section>
+<section id="sec:nouninfl" class="level3">
+<h3>Nominal inflection</h3>
 <p>Nouns in Yawarana may bear suffixes marking their possession status
 (<a href='#sec:nounposssuf' class='crossref' name='sec:nounposssuf' >ref</a>),
 number
@@ -797,8 +972,8 @@ and nominal past tense
 Possessed nouns may bear a person prefix, or the linker <i>y-</i>
 (<a href='#sec:nominalperson' class='crossref' name='sec:nominalperson' >ref</a>).
 <span title="noun classes re: possession">❗️</span></p>
-<h4 id="sec:nounposssuf">Suffixes for possessed and non-possessed
-nouns</h4>
+<section id="sec:nounposssuf" class="level4">
+<h4>Suffixes for possessed and non-possessed nouns</h4>
 <p>In the possession construction in Yawarana, the possessor noun occurs
 immediately preceding the possessed noun, which is the head of the
 possession phrase. <span title="crossref to phrase structure">❗️</span>
@@ -1094,7 +1269,9 @@ unpossessed:</p>
 </div>
 </li>
 </ol>
-<h4 id="sec:nominalnumber">Nominal number</h4>
+</section>
+<section id="sec:nominalnumber" class="level4">
+<h4>Nominal number</h4>
 <p>There are several pluralization strategies for nouns. One is the
 suffix <i>-tomo</i> (<i>-tom</i>, <i>-ton</i>), which occurs on both
 possessed and unpossessed nouns
@@ -1227,12 +1404,16 @@ class="tooltiptext gloss-pl"></span></span>’.</p>
 <p>In many nouns, old plural markers have become lexicalized, like in
 <i>wiriyamo</i> ‘woman’ or <i>waraijtokomo</i> ‘man’, which show former
 *<em>-yamë</em> and *<em>komo</em>.</p>
-<h4 id="sec:nominaltense">Nominal tense</h4>
+</section>
+<section id="sec:nominaltense" class="level4">
+<h4>Nominal tense</h4>
 <ul>
 <li><i>-jpë</i> ‘<span class="gloss">pst<span
 class="tooltiptext gloss-pst"></span></span>’</li>
 </ul>
-<h4 id="sec:nominalperson">Argument prefixes</h4>
+</section>
+<section id="sec:nominalperson" class="level4">
+<h4>Argument prefixes</h4>
 <p>Person prefixes on nouns are conditioned by the initial segment
 (<a href='#tab:possprefixes' class='crossref' name='tab:possprefixes' >ref</a>).
 C-initial nouns take <i>i-</i> ‘<span class="gloss">3<span
@@ -1496,7 +1677,9 @@ _V
 </tr>
 </tbody>
 </table>
-<h4 id="sec:irregnouns">Root suppletion in nominal possession</h4>
+</section>
+<section id="sec:irregnouns" class="level4">
+<h4>Root suppletion in nominal possession</h4>
 <ul>
 <li>‘father’:
 <ul>
@@ -1514,7 +1697,10 @@ _V
 <li>‘hammock string’</li>
 </ul></li>
 </ul>
-<h3 id="sec:nounderiv">Nominal Derivational Morphology</h3>
+</section>
+</section>
+<section id="sec:nounderiv" class="level3">
+<h3>Nominal Derivational Morphology</h3>
 <ul>
 <li>V → N
 <ul>
@@ -1644,8 +1830,12 @@ noun?</li>
   </div>
 </li>
 </ol>
-<h2 id="verbderiv">Verbal roots and stems</h2>
-<h3 id="classes-of-verbs">Classes of verbs</h3>
+</section>
+</section>
+<section id="verbderiv" class="level2">
+<h2>Verbal roots and stems</h2>
+<section id="classes-of-verbs" class="level3">
+<h3>Classes of verbs</h3>
 <p>Yawarana verb roots can be divided into those yielding an
 intransitive stem, and those yielding a transitive stem. The only
 inflectional criterion distinguishing the two classes is the third
@@ -1718,12 +1908,16 @@ vowel‑initial roots</li>
 <span title="examples for detransitivized verbs">❗️</span> <span
 title="what about V-initial intransitive verbs? how are they inflected?">❓</span></li>
 </ul>
-<h3 id="sec:vbz">Verbalizing suffixes</h3>
+</section>
+<section id="sec:vbz" class="level3">
+<h3>Verbalizing suffixes</h3>
 <p>None of these are productive, although there are many lexemes derived
 with them.</p>
-<h4 id="intransitive">Intransitive</h4>
+<section id="intransitive" class="level4">
+<h4>Intransitive</h4>
 <p><span title="write introduction">❗️</span></p>
-<h5 id="sec:tavbz">-ta / -na</h5>
+<section id="sec:tavbz" class="level5">
+<h5>-ta / -na</h5>
 <p><i>-ta</i> ‘<span class="gloss">vbz<span
 class="tooltiptext gloss-vbz"></span></span>.<span
 class="gloss">intr<span class="tooltiptext gloss-intr"></span></span>’
@@ -1954,39 +2148,56 @@ Derivation
 </tr>
 </tbody>
 </table>
-<h5 id="pamï--mamï"><em>-pamï</em> / <em>-mamï</em></h5>
+</section>
+<section id="pamï--mamï" class="level5">
+<h5><em>-pamï</em> / <em>-mamï</em></h5>
 <p><span title="check for -pantari">❗️</span> <span
 title="check tri and way">❗️</span></p>
-<h4 id="transitive">Transitive</h4>
+</section>
+</section>
+<section id="transitive" class="level4">
+<h4>Transitive</h4>
 <p><span title="write introduction">❗️</span></p>
-<h5 id="sec:kavbz">-ka</h5>
+<section id="sec:kavbz" class="level5">
+<h5>-ka</h5>
 <p><i>-ka</i> ‘<span class="gloss">vbz<span
 class="tooltiptext gloss-vbz"></span></span>.<span class="gloss">tr<span
 class="tooltiptext gloss-tr"></span></span>’ derives transitive verbs.
 <span title="overview of kavbz">❗️</span></p>
-<h5 id="sec:jtevbz"><em>-jtë</em> / <em>-të</em></h5>
+</section>
+<section id="sec:jtevbz" class="level5">
+<h5><em>-jtë</em> / <em>-të</em></h5>
 <ul>
 <li><i>-jtë</i> ‘<span class="gloss">vbz<span
 class="tooltiptext gloss-vbz"></span></span>.<span class="gloss">tr<span
 class="tooltiptext gloss-tr"></span></span>’ <span
 title="overview of jtevbz">❗️</span></li>
 </ul>
-<h5 id="sec:macaus"><em>-ma</em> / <em>-pa</em></h5>
+</section>
+<section id="sec:macaus" class="level5">
+<h5><em>-ma</em> / <em>-pa</em></h5>
 <ul>
 <li><i>-ma</i> ‘<span class="gloss">caus<span
 class="tooltiptext gloss-caus"></span></span>’ <span
 title="overview of macaus">❗️</span></li>
 </ul>
-<h3 id="valency-changing-affixes">Valency-changing affixes</h3>
+</section>
+</section>
+</section>
+<section id="valency-changing-affixes" class="level3">
+<h3>Valency-changing affixes</h3>
 <p><span title="write introduction">❗️</span></p>
-<h4 id="sec:detrz">Detransitivizing prefixes</h4>
+<section id="sec:detrz" class="level4">
+<h4>Detransitivizing prefixes</h4>
 <ul>
 <li><i>ëj-</i></li>
 <li><i>s-</i></li>
 <li><i>at-</i></li>
 </ul>
 <p><span title="distribution? morphemic analysis?">❓</span></p>
-<h4 id="transitivizing-suffixes">Transitivizing suffixes</h4>
+</section>
+<section id="transitivizing-suffixes" class="level4">
+<h4>Transitivizing suffixes</h4>
 <ul>
 <li><i>-ma</i> ‘<span class="gloss">caus<span
 class="tooltiptext gloss-caus"></span></span>’ <span
@@ -1997,12 +2208,17 @@ class="tooltiptext gloss-vbz"></span></span>.<span class="gloss">tr<span
 class="tooltiptext gloss-tr"></span></span>’ go on intransitive verb
 stems?</li>
 </ul>
-<h4 id="sec:ditrz">Ditransitivizing suffixes</h4>
+</section>
+<section id="sec:ditrz" class="level4">
+<h4>Ditransitivizing suffixes</h4>
 <ul>
 <li><i>-po</i> ‘<span class="gloss">caus<span
 class="tooltiptext gloss-caus"></span></span>’</li>
 </ul>
-<h3 id="sec:meaningderiv">Meaning-changing suffixes</h3>
+</section>
+</section>
+<section id="sec:meaningderiv" class="level3">
+<h3>Meaning-changing suffixes</h3>
 <ul>
 <li><i>-po</i> ‘<span class="gloss">des<span
 class="tooltiptext gloss-des"></span></span>’ (only occurs with
@@ -2016,9 +2232,13 @@ class="tooltiptext gloss-plur"></span></span>’</li>
 class="tooltiptext gloss-cess"></span></span> <span
 title="is there a cessative suffix?">❓</span></li>
 </ul>
-<h2 id="verbinfl">Verbal inflection</h2>
+</section>
+</section>
+<section id="verbinfl" class="level2">
+<h2>Verbal inflection</h2>
 <p><span title="write an introduction">❗️</span></p>
-<h3 id="sec:verbperson">Person prefixes</h3>
+<section id="sec:verbperson" class="level3">
+<h3>Person prefixes</h3>
 <p>Verbs are inflected for person with a set of prefixes, shown in
 <a href='#tab:verbprefixes' class='crossref' name='tab:verbprefixes' >ref</a>.<span
 title="u- is sometimes wï-, but usually not transcribed, and distribution unclear">❗️</span>
@@ -2370,7 +2590,8 @@ transitive?</li>
   </div>
 </li>
 </ol>
-<h4 id="sec:local">Transitive local scenarios</h4>
+<section id="sec:local" class="level4">
+<h4>Transitive local scenarios</h4>
 <ol class="example">
     <li class="example" id="">
     <div class="preamble">  </div>
@@ -2488,8 +2709,13 @@ title="GrMePers.029">❗️</span></li>
 <li>*<em>t‑V‑se</em> is no more — the <em>t‑</em> is gone, except in
 lexicalized items</li>
 </ul>
-<h4 id="sec:ta-3">The third person prefix <i>ta-</i></h4>
-<h3 id="sec:tam">Main clause tense‑aspect‑mood‑polarity suffixes</h3>
+</section>
+<section id="sec:ta-3" class="level4">
+<h4>The third person prefix <i>ta-</i></h4>
+</section>
+</section>
+<section id="sec:tam" class="level3">
+<h3>Main clause tense‑aspect‑mood‑polarity suffixes</h3>
 <p>Verbs in main clauses are inflected for TAMP with a set of suffixes,
 shown in
 <a href='#tab:verbtam' class='crossref' name='tab:verbtam' >ref</a>.
@@ -2699,7 +2925,8 @@ class="tooltiptext gloss-imn"></span></span>=<span
 class="gloss">concl<span
 class="tooltiptext gloss-concl"></span></span>’</li>
 </ul>
-<h4 id="sec:riipfv"><i>-ri</i></h4>
+<section id="sec:riipfv" class="level4">
+<h4><i>-ri</i></h4>
 <ul>
 <li>allomorphy:
 <ul>
@@ -2746,7 +2973,8 @@ class="tooltiptext gloss-ipfv"></span></span>’ with postverbal
   </div>
 </li>
 </ol>
-<h5 id="semantics">Semantics</h5>
+<section id="semantics" class="level5">
+<h5>Semantics</h5>
 <ul>
 <li>not specified for tense, just imperfective aspect:
 <ul>
@@ -2850,7 +3078,10 @@ class="tooltiptext gloss-ipfv"></span></span>’ with postverbal
         </ol>
     </li>
 </ol>
-<h4 id="jpë"><i>-jpë</i></h4>
+</section>
+</section>
+<section id="jpë" class="level4">
+<h4><i>-jpë</i></h4>
 <ul>
 <li>allomorphy: none?</li>
 <li>diachrony: from <i>-jpë</i> ‘<span class="gloss">pst<span
@@ -2887,7 +3118,9 @@ class="tooltiptext gloss-neg"></span></span>’
   </div>
 </li>
 </ol>
-<h4 id="se"><i>-se</i></h4>
+</section>
+<section id="se" class="level4">
+<h4><i>-se</i></h4>
 <ul>
 <li>allomorphy: <i>-se</i>/<i>-che</i> ‘<span class="gloss">ptcp<span
 class="tooltiptext gloss-ptcp"></span></span> / <span
@@ -2961,7 +3194,9 @@ class="tooltiptext gloss-pl"></span></span>’</li>
 </li>
 </ol>
 <p><span title="semantics?">❓</span></p>
-<h4 id="sapë"><i>-sapë</i></h4>
+</section>
+<section id="sapë" class="level4">
+<h4><i>-sapë</i></h4>
 <ul>
 <li>diachrony: from <i>-sapë</i> ‘<span class="gloss">abs<span
 class="tooltiptext gloss-abs"></span></span>.<span
@@ -3074,7 +3309,9 @@ existential negation?</li>
   </div>
 </li>
 </ol>
-<h4 id="sec:sareimn"><i>-sarë</i></h4>
+</section>
+<section id="sec:sareimn" class="level4">
+<h4><i>-sarë</i></h4>
 <ul>
 <li>once a converb, now ‘imminent future’</li>
 </ul>
@@ -3156,7 +3393,10 @@ existential negation?</li>
   </div>
 </li>
 </ol>
-<h3 id="subordinate-clause-markers">Subordinate Clause markers</h3>
+</section>
+</section>
+<section id="subordinate-clause-markers" class="level3">
+<h3>Subordinate Clause markers</h3>
 <p><span title="these should maybe go to another section">❗️</span></p>
 <!-- probably all productive, right? -->
 <ul>
@@ -3207,7 +3447,9 @@ class="tooltiptext gloss-des"></span></span>’</li>
 <li><em>-ajtawï</em> ‘if when’</li>
 </ul></li>
 </ul>
-<h3 id="sec:verbalnumber">Number</h3>
+</section>
+<section id="sec:verbalnumber" class="level3">
+<h3>Number</h3>
 <ul>
 <li><i>-ri</i>=<i>kontomo</i></li>
 <li><i>-sapë</i>=<i>kontomo</i></li>
@@ -3219,7 +3461,9 @@ class="tooltiptext gloss-des"></span></span>’</li>
 <li>what about <em>-i</em> ‘<span class="gloss">juss<span
 class="tooltiptext gloss-juss"></span></span>’?</li>
 </ul>
-<h3 id="copula-auxiliary">Copula / Auxiliary</h3>
+</section>
+<section id="copula-auxiliary" class="level3">
+<h3>Copula / Auxiliary</h3>
 <p><span title="paradigm">❗️</span> <span
 title="did any particles develop from inflected forms?  Man, wai, manai, etc">❓</span>
 <span
@@ -3234,13 +3478,19 @@ and <i>manïkï</i> ‘<span class="gloss">rel<span
 class="tooltiptext gloss-rel"></span></span>.<span
 class="gloss">anim<span
 class="tooltiptext gloss-anim"></span></span>’</p>
-<h2 id="postp">Postpositions</h2>
+</section>
+</section>
+<section id="postp" class="level2">
+<h2>Postpositions</h2>
 <p>postposition</p>
-<h3 id="defining-the-category">Defining the category</h3>
+<section id="defining-the-category" class="level3">
+<h3>Defining the category</h3>
 <ul>
 <li>monomorphemic vs bipartite (vs ‘stacked’)</li>
 </ul>
-<h3 id="sec:postinfl">Inflectional morphology</h3>
+</section>
+<section id="sec:postinfl" class="level3">
+<h3>Inflectional morphology</h3>
 <p>Postpositions take the same inflectional prefixes as nouns
 (<a href='#sec:nounposssuf' class='crossref' name='sec:nounposssuf' >ref</a>).
 <span
@@ -3327,7 +3577,9 @@ class="tooltiptext gloss-pl"></span></span>’</li>
 <li><i>ësë-</i> ‘<span class="gloss">detrz<span
 class="tooltiptext gloss-detrz"></span></span>’</li>
 </ul>
-<h3 id="locative-postpositions">Locative Postpositions</h3>
+</section>
+<section id="locative-postpositions" class="level3">
+<h3>Locative Postpositions</h3>
 <ul>
 <li>clear bipartite Ground+Path</li>
 <li>unproductive Bipartite X+Path?</li>
@@ -3417,8 +3669,9 @@ aquatic
   </div>
 </li>
 </ol>
-<h3 id="nonlocative-oblique-postpositions">Nonlocative Oblique
-Postpositions</h3>
+</section>
+<section id="nonlocative-oblique-postpositions" class="level3">
+<h3>Nonlocative Oblique Postpositions</h3>
 <ul>
 <li><i>pana</i> ‘<span class="gloss">dat<span
 class="tooltiptext gloss-dat"></span></span>’</li>
@@ -3426,7 +3679,9 @@ class="tooltiptext gloss-dat"></span></span>’</li>
 class="tooltiptext gloss-ins"></span></span>’</li>
 <li><em>wanai</em></li>
 </ul>
-<h3 id="misc">Misc</h3>
+</section>
+<section id="misc" class="level3">
+<h3>Misc</h3>
 <ul>
 <li><i>chi</i> ‘<span class="gloss">cop<span
 class="tooltiptext gloss-cop"></span></span>’ combines with <i>yawë</i>
@@ -3520,9 +3775,13 @@ class="tooltiptext gloss-fmr"></span></span>’</li>
   </div>
 </li>
 </ol>
-<h2 id="partideo">Particles, ideophones and interjections</h2>
+</section>
+</section>
+<section id="partideo" class="level2">
+<h2>Particles, ideophones and interjections</h2>
 <p>particle ideophone interjection</p>
-<h3 id="particles">Particles</h3>
+<section id="particles" class="level3">
+<h3>Particles</h3>
 <p>Three kinds of particles elsewhere in the family:</p>
 <ol type="1">
 <li>second position (modals, focus)</li>
@@ -3532,16 +3791,23 @@ class="tooltiptext gloss-fmr"></span></span>’</li>
 <ul>
 <li>prosodic effects?</li>
 </ul>
-<h3 id="ideophones">Ideophones</h3>
+</section>
+<section id="ideophones" class="level3">
+<h3>Ideophones</h3>
 <ul>
 <li>constructions with <i>nwa</i> ‘thus’? (example with <em>pïtï</em>
 ‘paint’)</li>
 </ul>
-<h3 id="interjections">Interjections</h3>
+</section>
+<section id="interjections" class="level3">
+<h3>Interjections</h3>
 <ul>
 <li>kind of particle?</li>
 </ul>
-<h2 id="negation">Negation</h2>
+</section>
+</section>
+<section id="negation" class="level2">
+<h2>Negation</h2>
 <p>There are a number of negation strategies in Yawarana. The most
 general negator is the particle <i>jra</i> ‘<span class="gloss">neg<span
 class="tooltiptext gloss-neg"></span></span>’, which can negate a number
@@ -3706,8 +3972,10 @@ construction from a verb with an adverbializing negative suffix
 <em>*-pïra</em> and followed by a copula (<a
 href="#source-gildea2016negation">Gildea and Meira 2016</a>, <a
 href="#source-caceres2016negation">Cáceres 2016</a>).</p>
-<h3 id="verbal-negation">Verbal negation</h3>
-<h4 id="sec:janeg"><i>-ja</i> ‘<span class="gloss">neg<span
+<section id="verbal-negation" class="level3">
+<h3>Verbal negation</h3>
+<section id="sec:janeg" class="level4">
+<h4><i>-ja</i> ‘<span class="gloss">neg<span
 class="tooltiptext gloss-neg"></span></span>’</h4>
 <p><i>-ja</i> ‘<span class="gloss">neg<span
 class="tooltiptext gloss-neg"></span></span>’ is pluralized with the
@@ -3717,7 +3985,9 @@ counterpart to <i>-se</i> ‘<span class="gloss">pst<span
 class="tooltiptext gloss-pst"></span></span>’.</p>
 <p><span
 title="hypothesis: if -se is perfective, -ja should be, too">❗️</span></p>
-<h4 id="jnari-neg"><i>-jnari</i> ‘<span class="gloss">neg<span
+</section>
+<section id="jnari-neg" class="level4">
+<h4><i>-jnari</i> ‘<span class="gloss">neg<span
 class="tooltiptext gloss-neg"></span></span>’</h4>
 <ul>
 <li>very rare</li>
@@ -3727,7 +3997,9 @@ class="tooltiptext gloss-neg"></span></span>’</h4>
 <li>occurs with <i>-po</i> ‘<span class="gloss">des<span
 class="tooltiptext gloss-des"></span></span>’</li>
 </ul>
-<h4 id="jrama-proh"><i>-jrama</i> ‘<span class="gloss">proh<span
+</section>
+<section id="jrama-proh" class="level4">
+<h4><i>-jrama</i> ‘<span class="gloss">proh<span
 class="tooltiptext gloss-proh"></span></span>’</h4>
 <ul>
 <li>prohibitive</li>
@@ -3761,7 +4033,9 @@ class="gloss">imp<span class="tooltiptext gloss-imp"></span></span>’
   </div>
 </li>
 </ol>
-<h4 id="others">Others</h4>
+</section>
+<section id="others" class="level4">
+<h4>Others</h4>
 <ul>
 <li><i>-kempïnirë</i> ‘<span class="gloss">ptcp<span
 class="tooltiptext gloss-ptcp"></span></span>.<span
@@ -3776,11 +4050,15 @@ class="tooltiptext gloss-neg"></span></span>.<span
 class="gloss">purp<span
 class="tooltiptext gloss-purp"></span></span>’</li>
 </ul>
-<h3 id="nominal-negation">Nominal negation</h3>
+</section>
+</section>
+<section id="nominal-negation" class="level3">
+<h3>Nominal negation</h3>
 <p><i>jra</i> ‘<span class="gloss">neg<span
 class="tooltiptext gloss-neg"></span></span>’</p>
-<h3 id="negative-nonverbal-predication">Negative nonverbal
-predication</h3>
+</section>
+<section id="negative-nonverbal-predication" class="level3">
+<h3>Negative nonverbal predication</h3>
 <ul>
 <li><i>pïnirë</i> ‘<span class="gloss">neg<span
 class="tooltiptext gloss-neg"></span></span>’</li>
@@ -3791,8 +4069,13 @@ class="tooltiptext gloss-exist"></span></span>’</li>
 <li><i>pïni</i> ‘<span class="gloss">neg<span
 class="tooltiptext gloss-neg"></span></span>’</li>
 </ul>
-<h3 id="other-negation">Other negation</h3>
-<h2 id="auxiliarized-constructions">Auxiliarized constructions</h2>
+</section>
+<section id="other-negation" class="level3">
+<h3>Other negation</h3>
+</section>
+</section>
+<section id="auxiliarized-constructions" class="level2">
+<h2>Auxiliarized constructions</h2>
 <p>claim: everything can take an auxiliary, except <i>-kë</i> ‘<span
 class="gloss">imp<span class="tooltiptext gloss-imp"></span></span>’</p>
 <p><span
@@ -3800,22 +4083,34 @@ title="look at frequency and distributional possibilities for various forms with
 <span title="are there limits on what form of AUX can occur?">❓</span>
 <span title="conventionalized meanings of combinations?">❓</span> <span
 title="where is person marking? also alignment">❓</span></p>
-<h3 id="defining-auxiliaries">Defining auxiliaries</h3>
-<h3 id="main-clauses">Main clauses</h3>
+<section id="defining-auxiliaries" class="level3">
+<h3>Defining auxiliaries</h3>
+</section>
+<section id="main-clauses" class="level3">
+<h3>Main clauses</h3>
 <ul>
 <li>multiple auxiliaries</li>
 </ul>
-<h3 id="subordinate-clauses">Subordinate clauses</h3>
+</section>
+<section id="subordinate-clauses" class="level3">
+<h3>Subordinate clauses</h3>
 <ul>
 <li><em>chi=pëkë</em></li>
 <li><em>chi=yawë</em>/<em>chawë</em></li>
 <li><em>chi-ripo</em></li>
 <li><em>wej-tojpe</em></li>
 </ul>
-<h2 id="phrases">Phrases</h2>
-<h3 id="sec:nounphrases">Noun phrases</h3>
+</section>
+</section>
+<section id="phrases" class="level2">
+<h2>Phrases</h2>
+<section id="sec:nounphrases" class="level3">
+<h3>Noun phrases</h3>
 <p>TBD</p>
-<h2 id="nonverbal">Nonverbal predications</h2>
+</section>
+</section>
+<section id="nonverbal" class="level2">
+<h2>Nonverbal predications</h2>
 <p><a href="#source-gildea2018reconstructing">Gildea 2018</a>: 366
 distinguishes two main formal types of nonverbal predication in Cariban
 languages: juxtaposition and copular constructions.</p>
@@ -3837,8 +4132,10 @@ class="tooltiptext gloss-cop"></span></span> + Npred (S&amp;M 2009)</li>
 <li>Nsubj + Adverbial</li>
 </ul></li>
 </ul>
-<h3 id="observations">Observations</h3>
-<h4 id="patterns">Patterns</h4>
+<section id="observations" class="level3">
+<h3>Observations</h3>
+<section id="patterns" class="level4">
+<h4>Patterns</h4>
 <ul>
 <li>“existential particles” (<em>mëtë</em>, <em>mïntë</em>,
 <em>entë</em>, <em>ijtë</em>)
@@ -3980,7 +4277,9 @@ class="tooltiptext gloss-subj"></span></span></sub> construction</li>
 <a class="exref" example_id="histgrme-107" ></a> <span
 title="ask natalia">❗️</span></li>
 </ul>
-<h4 id="categorization-issues">Categorization issues</h4>
+</section>
+<section id="categorization-issues" class="level4">
+<h4>Categorization issues</h4>
 <ul>
 <li>possessives vs properties can be hard to distinguish (‘footed’,
 etc.)</li>
@@ -3991,7 +4290,11 @@ largely went by ‘estar’ vs ‘haber’ in translation, with the exception of
 <span
 title="@spike: was this the analysis you suggested?">❓</span></li>
 </ul>
-<h2 id="simpleverb">Simple verbal clauses</h2>
+</section>
+</section>
+</section>
+<section id="simpleverb" class="level2">
+<h2>Simple verbal clauses</h2>
 <p><span
 title="examples of [non]declarative w/ [in]transitive verbs">❗️</span></p>
 <ul>
@@ -4000,8 +4303,10 @@ title="examples of [non]declarative w/ [in]transitive verbs">❗️</span></p>
 <li>indexation</li>
 <li>clausal particles</li>
 </ul>
-<h3 id="intransitive-clauses">Intransitive clauses</h3>
-<h4 id="first-person">First person</h4>
+<section id="intransitive-clauses" class="level3">
+<h3>Intransitive clauses</h3>
+<section id="first-person" class="level4">
+<h4>First person</h4>
 <ol class="example">
 <li class=example id ="convrisamaj-4">
   <div class="interlinear-wrapper">
@@ -4109,7 +4414,9 @@ title="examples of [non]declarative w/ [in]transitive verbs">❗️</span></p>
 <ul>
 <li>not attested: prefixed verb followed by pronoun</li>
 </ul>
-<h4 id="second-person">Second person</h4>
+</section>
+<section id="second-person" class="level4">
+<h4>Second person</h4>
 <ol class="example">
 <li class=example id ="convamgu-7">
   <div class="interlinear-wrapper">
@@ -4138,7 +4445,9 @@ title="examples of [non]declarative w/ [in]transitive verbs">❗️</span></p>
 <ul>
 <li>not attested: pronoun</li>
 </ul>
-<h4 id="third-person">Third person</h4>
+</section>
+<section id="third-person" class="level4">
+<h4>Third person</h4>
 <ol class="example">
 <li class=example id ="ctorat-6">
   <div class="interlinear-wrapper">
@@ -4270,7 +4579,10 @@ class="tooltiptext gloss-3"></span></span>’</li>
   </div>
 </li>
 </ol>
-<h3 id="transitive-clauses">Transitive clauses</h3>
+</section>
+</section>
+<section id="transitive-clauses" class="level3">
+<h3>Transitive clauses</h3>
 <p>There are several factors that play a role here:</p>
 <ol type="1">
 <li>presence or absence of prefix</li>
@@ -4279,7 +4591,8 @@ class="tooltiptext gloss-3"></span></span>’</li>
 <li>presence or absence of <i>ya</i> ‘<span class="gloss">erg<span
 class="tooltiptext gloss-erg"></span></span>’</li>
 </ol>
-<h4 id="third-on-third">Third on third</h4>
+<section id="third-on-third" class="level4">
+<h4>Third on third</h4>
 <ol class="example">
 <li class=example id ="convcosnoind-132">
   <div class="interlinear-wrapper">
@@ -4305,9 +4618,15 @@ class="tooltiptext gloss-erg"></span></span>’</li>
   </div>
 </li>
 </ol>
-<h2 id="questions">Questions</h2>
+</section>
+</section>
+</section>
+<section id="questions" class="level2">
+<h2>Questions</h2>
 <p>TBD</p>
-<h2 id="multiclausal">Multiclausal</h2>
+</section>
+<section id="multiclausal" class="level2">
+<h2>Multiclausal</h2>
 <p>Historically, the function of subordinate clauses was covered by
 nominalizations and adverbializations. For instance, a meaning like
 ‘<strong>after I slept</strong>, I ate’ was expressed as ‘after my
@@ -4324,8 +4643,11 @@ postposition.</p>
 <li><p>clausal particles</p></li>
 <li><p>+mapping between matrix and subordinate</p></li>
 </ul>
-<h2 id="wordorder">Word order variation</h2>
-<h3 id="transitive-clauses-1">Transitive clauses</h3>
+</section>
+<section id="wordorder" class="level2">
+<h2>Word order variation</h2>
+<section id="transitive-clauses-1" class="level3">
+<h3>Transitive clauses</h3>
 <ul>
 <li>clear tendency for VCop (as opposed to CopV)</li>
 </ul>
@@ -4350,12 +4672,19 @@ postposition.</p>
   </div>
 </li>
 </ol>
-<h3 id="nvp-order">Nonverbal predication</h3>
-<h2 id="pragmarked">Pragmatically marked constructions</h2>
+</section>
+<section id="nvp-order" class="level3">
+<h3>Nonverbal predication</h3>
+</section>
+</section>
+<section id="pragmarked" class="level2">
+<h2>Pragmatically marked constructions</h2>
 <ul>
 <li>participant nominalizations for pseudo-clefts</li>
 </ul>
-<h2 id="voice">Detransitive voice</h2>
+</section>
+<section id="voice" class="level2">
+<h2>Detransitive voice</h2>
 <ul>
 <li>functions of <span class="gloss">detrz<span
 class="tooltiptext gloss-detrz"></span></span>:
@@ -4378,7 +4707,8 @@ class="tooltiptext gloss-inf"></span></span>’</li>
 <li>participle</li>
 </ul></li>
 </ul>
-<h3 id="issues-with-transitivity">Issues with transitivity</h3>
+<section id="issues-with-transitivity" class="level3">
+<h3>Issues with transitivity</h3>
 <ul>
 <li><i>ya</i> ‘<span class="gloss">erg<span
 class="tooltiptext gloss-erg"></span></span>’ occurs with
@@ -4478,7 +4808,10 @@ intransitives</li>
   </div>
 </li>
 </ol>
-<h2 id="references">References</h2>
+</section>
+</section>
+<section id="references" class="level2">
+<h2>References</h2>
 <ul>
 <li><a id="source-caceres2016negation"> </a>Cáceres, Natalia. 2016.
 Nominal negation in Cariban. (Presentation given at Estructura de las
@@ -4499,6 +4832,7 @@ Gruyter.</li>
 linguistic theory volume 2: Grammatical topics. (2.) Oxford: Oxford
 University Press.</li>
 </ul>
+</section>
 <aside id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
@@ -4518,7 +4852,7 @@ for (var i = 0; i < targets.length; i++) {
 };
         </script>
     </article>
-
+</div>
     <script src="examples.js"></script> 
     <script src="glossing.js"></script> 
     <script src="crossref.js"></script>
@@ -4529,6 +4863,14 @@ for (var i = 0; i < targets.length; i++) {
         numberSections()
         numberCaptions()
         resolveCrossrefs()
+    </script>
+    <script type="text/javascript">
+document.querySelectorAll('.subitems').forEach(function(subitems) {
+        if (subitems.children.length == 0){
+            subitems.parentNode.removeChild(subitems);
+        }
+});
+
     </script>
     <script>
         function toggleTOC() {
@@ -4546,6 +4888,72 @@ for (var i = 0; i < targets.length; i++) {
             alignment.innerHTML = plotWord(alignment.innerHTML, 'span');
         }
     </script>
+
 <script src="https://hypothes.is/embed.js" async></script>
+
+<script type="text/javascript">
+    var nav = document.getElementById("nav-items") // get the div holding our eventual table of contents
+
+function collapse(target){
+    target.classList.remove('active');
+    if (target.children[0].classList.contains("toggleWrap")){
+        target.children[0].classList.remove("show")
+    } else{
+        console.log(target)
+    }
+}
+
+function expand(target){
+    target.classList.add('active');
+    if (target.children[0].classList.contains("toggleWrap")){
+        target.children[0].classList.add("show")
+    } else{
+        console.log(target)
+    }
+}
+
+
+function modifyTOC(target){}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const id = entry.target.getAttribute('id');
+            target = document.querySelector(`nav [id="nav-${id}"]`)
+            if (entry.intersectionRatio > 0) {
+                // console.log("activating "+ id)
+                expand(target)
+            } else {
+                // console.log("collapsing "+ id)
+                collapse(target)
+            }
+        });
+    });
+  // Track all sections that have an `id` applied
+  // document.querySelectorAll("h2, h3, h4, h5, h6").forEach((section) => {
+  document.querySelectorAll('section[id]').forEach((section) => {
+    observer.observe(section);
+  });
+});
+</script>
+<script type="text/javascript">
+    window.addEventListener("load", () => {
+  for (let i of document.querySelectorAll(".collapse ol")) {
+    let tog = document.createElement("span");
+    tog.classList.add("toggle")
+    tog.onclick = () => tog.parentNode.classList.toggle("show");
+
+    i.previousSibling.style = "display: inline;"
+
+    let line = document.createElement("span")
+    line.classList.add("toggleWrap")
+    line.appendChild(tog)   
+    line.appendChild(i.previousSibling);
+
+    i.parentElement.insertBefore(line, i);
+  }
+});
+</script>
 </body>
 </html> 
